@@ -1,6 +1,7 @@
 import styles from "./App.module.css";
 import CurrencyAPI from "../CurrencyAPI/CurrencyAPI.ts";
 import { useState, useEffect } from "react";
+import CurrencySelection from "./CurrencySelection/CurrencySelection.tsx";
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
@@ -51,26 +52,16 @@ function App() {
             value={currencyAmount}
             onChange={(ev) => setCurrencyAmount(+ev.target.value)}
           />
-          <select
+          <CurrencySelection
             value={selectedCurrency}
             onChange={(ev) => setSelectedCurrency(ev.target.value)}
-          >
-            {currencies.map(({ currencyCode }) => (
-              <option value={currencyCode} key={currencyCode}>
-                {currencyCode}
-              </option>
-            ))}
-          </select>
-          <select
+            currenciesArr={currencies}
+          />
+          <CurrencySelection
             value={selectedExchangeCurrency}
             onChange={(ev) => setSelectedExchangeCurrency(ev.target.value)}
-          >
-            {exchangeCurrencies.map(({ currencyCode }) => (
-              <option value={currencyCode} key={currencyCode}>
-                {currencyCode}
-              </option>
-            ))}
-          </select>
+            currenciesArr={exchangeCurrencies}
+          />
           {currencyAmount && selectedCurrency && selectedExchangeCurrency && (
             <p>
               Exchange:
@@ -80,7 +71,7 @@ function App() {
                     currency.currencyCode === selectedExchangeCurrency
                 ).currencyExchangeRate}
             </p>
-          )}{" "}
+          )}
         </>
       )}
     </div>
