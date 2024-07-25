@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "jsx": "react-jsxdev",
+    "esModuleInterop": true,
+    "noEmit": true,
+    "allowImportingTsExtensions": true
+  },
+  "isolatedModules": true
+}
