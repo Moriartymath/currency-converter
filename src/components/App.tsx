@@ -50,6 +50,7 @@ function App() {
         <>
           <input
             value={currencyAmount}
+            type="number"
             onChange={(ev) => setCurrencyAmount(+ev.target.value)}
           />
           <CurrencySelection
